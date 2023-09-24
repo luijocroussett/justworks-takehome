@@ -155,7 +155,7 @@ export default function App() {
           )}
         </GridItem>
         <GridItem colSpan={3} colStart={5} colEnd={8}>
-          <Text htmlFor="btc-input"> `${constants.configs.BTC_ALLOCATION.text}BTC allocation` </Text>
+          <Text htmlFor="btc-input"> {`${constants.configs.BTC_ALLOCATION.text} BTC allocation`} </Text>
           <Input
             data-testid="btc-input"
             disabled={state.rates.status.value === "error"}
