@@ -27,7 +27,7 @@ Luis Croussett | [ljcroussett@gmail.com][email-ref] | [linkedIn][linkedin-ref] |
 ``` bash
 git clone
 cd justworks-takehome [or other path if directory name was changed]
-npm install
+npm install --legacy-peer-deps
 npm test
 ```
 
