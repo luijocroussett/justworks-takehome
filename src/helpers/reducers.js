@@ -114,7 +114,7 @@ export default (state, action) => {
                     state.rates.data
                   ) * 100 / 100)
                   .toString()
-              : "Unable to calculate"
+              : constants.errorMessages.CALCULATE_ERROR
           },
           btc: { value, status, message: error },
           eth: {
@@ -127,7 +127,7 @@ export default (state, action) => {
                     state.rates.data
                   )
                   .toString()
-              : "Unable to calculate"
+              : constants.errorMessages.CALCULATE_ERROR
           }
         }
       };
@@ -149,7 +149,7 @@ export default (state, action) => {
                     state.rates.data
                   )
                   .toString()
-              : "Unable to calculate"
+              : constants.errorMessages.CALCULATE_ERROR
           },
           btc: {
             status: "",
@@ -161,7 +161,7 @@ export default (state, action) => {
                     state.rates.data
                   )
                   .toString()
-              : "Unable to calculate"
+              : constants.errorMessages.CALCULATE_ERROR
           },
           eth: { value, status, message: error }
         }

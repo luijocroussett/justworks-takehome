@@ -127,21 +127,23 @@ describe("<App/>", () => {
       const ethInput = await screen.getByTestId("eth-input");
     
       await user.type(usdInput, "a");
-
-      const usdValidationDescription = await screen.findByTestId(
-        "usd-validation-description"
-      );
-      expect(usdValidationDescription).toHaveTextContent(
-        constants.errorMessages.NUMERIC_VALUES_ONLY
-      );
-      expect(btcInput).toHaveValue(constants.errorMessages.CALCULATE_ERROR);
-      expect(ethInput).toHaveValue(constants.errorMessages.CALCULATE_ERROR);
+      await waitFor(async()=> {
+        const usdValidationDescription = await screen.findByTestId(
+          "usd-validation-description"
+        );
+        expect(usdValidationDescription).toHaveTextContent(
+          constants.errorMessages.NUMERIC_VALUES_ONLY
+        );
+        expect(btcInput).toHaveValue(constants.errorMessages.CALCULATE_ERROR);
+        expect(ethInput).toHaveValue(constants.errorMessages.CALCULATE_ERROR);
+      })
     
       await user.click(btcInput);
-    
-      expect(usdInput).toHaveTextContent("");
-      expect(btcInput).toHaveTextContent("");
-      expect(ethInput).toHaveTextContent("");
+      await waitFor(async() => {
+        expect(usdInput).toHaveTextContent("");
+        expect(btcInput).toHaveTextContent("");
+        expect(ethInput).toHaveTextContent("");
+      })
     });
   });
 

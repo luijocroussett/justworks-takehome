@@ -65,7 +65,7 @@ export default function App() {
     });
   };
   const handleInputOnFocus = (event) => {
-    if (event.target.value === "Unable to calculate") {
+    if (event.target.value === constants.errorMessages.CALCULATE_ERROR) {
       dispatch({
         type: "RESET_INPUTS"
       });
