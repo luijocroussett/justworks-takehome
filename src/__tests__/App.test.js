@@ -5,8 +5,8 @@ import { rest } from "msw";
 import { setupServer } from "msw/node";
 import { render, fireEvent, screen, waitFor, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import constants from "./helpers/constants";
-import App from "./App";
+import constants from "../helpers/constants";
+import App from "../App";
 
 const server = setupServer(
   rest.get("https://api.coinbase.com/v2/exchange-rates",
