@@ -1,10 +1,11 @@
 # justworks-takehome
 
-Luis Croussett ![][] ![][] ![][]
+Luis Croussett | [ljcroussett@gmail.com][email-ref] | [linkedIn][linkedin-ref] | [resume][resume-ref]
 
-[]:
-[]:
-[]:
+[email-ref]: mailto:ljcroussett@gmail.com
+[linkedin-ref]: https://www.linkedin.com/in/luiscroussett/
+[resume-ref]: https://drive.google.com/file/d/1Aum4vK_ROVSc1tCgKa7Gnn5d_BmCraSh/view?usp=sharing
+
 
 <a id="top"></a>
 ## Table of content: 📖
