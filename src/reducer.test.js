@@ -1,6 +1,6 @@
-import reducer from "../src/helpers/reducers";
-import validators from "../src/helpers/validators";
-import mockData from "./mockData";
+import reducer from "./helpers/reducers";
+import validators from "./helpers/validators";
+import mockData from "./helpers/mockData";
 
 describe("application reducers", () => {
   it("RESET_INPUT_VALUES: should clear values for ETH, BTC and USD", () => {

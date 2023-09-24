@@ -1,4 +1,5 @@
 import helpers from "./helpers";
+import constants from "./constants"
 
 export default (state, action) => {
   switch (action.type) {
@@ -7,7 +8,7 @@ export default (state, action) => {
         ...state,
         rates: {
           ...state.rates,
-          status: { value: "error", message: "unable to retrieve rates data" }
+          status: { value: "error", message: constants.errorMessages.RATES_FETCH_ERROR }
         }
       };
     case "FETCHING_RATES_STARTED":
@@ -15,7 +16,7 @@ export default (state, action) => {
         ...state,
         rates: {
           ...state.rates,
-          status: { value: "warning", message: "loading rates data" }
+          status: { value: "warning", message: constants.errorMessages.RATES_FETCH_LOADING }
         }
       };
     case "FETCHING_RATES_SUCCESS":
@@ -26,7 +27,7 @@ export default (state, action) => {
           data: action.payload,
           status: {
             value: "success",
-            message: "rates data retrieved successfully"
+            message: constants.errorMessages.RATES_FETCH_SUCCESS
           }
         }
       };
@@ -74,11 +75,11 @@ export default (state, action) => {
             value: isValid
               ? helpers
                   .calculateUSDToBTC(
-                    value === "" ? "0" : parseFloat(value) * 0.7,
+                    value === "" ? "0" : parseFloat(value) * constants.configs.BTC_ALLOCATION.value,
                     state.rates.data
                   )
                   .toString()
-              : "Unable to calculate"
+              : constants.errorMessages.CALCULATE_ERROR
           },
           eth: {
             status: "",
@@ -86,11 +87,11 @@ export default (state, action) => {
             value: isValid
               ? helpers
                   .calculateUSDToETH(
-                    value === "" ? "0" : parseFloat(value) * 0.3,
+                    value === "" ? "0" : parseFloat(value) * constants.configs.ETH_ALLOCATION.value,
                     state.rates.data
                   )
                   .toString()
-              : "Unable to calculate"
+              : constants.errorMessages.CALCULATE_ERROR
           }
         }
       };
@@ -106,11 +107,12 @@ export default (state, action) => {
             status: "",
             message: "",
             value: isValid
-              ? helpers
+              ? Math.round(
+                  helpers
                   .calculateBTCToUSD(
-                    (value === "" ? "0" : parseFloat(value)) / 0.7,
+                    (value === "" ? "0" : parseFloat(value)) / constants.configs.BTC_ALLOCATION.value,
                     state.rates.data
-                  )
+                  ) * 100 / 100)
                   .toString()
               : "Unable to calculate"
           },
@@ -121,7 +123,7 @@ export default (state, action) => {
             value: isValid
               ? helpers
                   .calculateBTCToETH(
-                    (value === "" ? "0" : parseFloat(value) * 0.3) / 0.7,
+                    (value === "" ? "0" : parseFloat(value) * constants.configs.ETH_ALLOCATION.value) / constants.configs.BTC_ALLOCATION.value,
                     state.rates.data
                   )
                   .toString()
@@ -143,7 +145,7 @@ export default (state, action) => {
             value: isValid
               ? helpers
                   .calculateETHToUSD(
-                    value === "" ? "0" : parseFloat(value) / 0.3,
+                    value === "" ? "0" : parseFloat(value) / constants.configs.ETH_ALLOCATION.value,
                     state.rates.data
                   )
                   .toString()
@@ -155,7 +157,7 @@ export default (state, action) => {
             value: isValid
               ? helpers
                   .calcualteETHToBTC(
-                    (value === "" ? "0" : parseFloat(value) * 0.7) / 0.3,
+                    (value === "" ? "0" : parseFloat(value) * constants.configs.BTC_ALLOCATION.value) / constants.configs.ETH_ALLOCATION.value,
                     state.rates.data
                   )
                   .toString()

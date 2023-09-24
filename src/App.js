@@ -3,7 +3,7 @@ import { useReducer, useEffect } from "react";
 import reducers from "./helpers/reducers";
 import validator from "./helpers/validators";
 import constants from "./helpers/constants";
-import axios from "axios";
+// import axios from "axios";
 import {
   Input,
   Text,
@@ -82,7 +82,7 @@ export default function App() {
         if (!response.ok) throw new Error(response.status);
         const data = await response.json();
         // const { data } = await axios.get(COINBASE_API_URL);
-        // console.log("response", data.data.rates.ETH);
+        // console.log("response", data);
         dispatch({
           type: "FETCHING_RATES_SUCCESS",
           payload: {
@@ -155,7 +155,7 @@ export default function App() {
           )}
         </GridItem>
         <GridItem colSpan={3} colStart={5} colEnd={8}>
-          <Text htmlFor="btc-input"> 70% BTC allocation </Text>
+          <Text htmlFor="btc-input"> `${constants.configs.BTC_ALLOCATION.text}BTC allocation` </Text>
           <Input
             data-testid="btc-input"
             disabled={state.rates.status.value === "error"}
@@ -178,7 +178,7 @@ export default function App() {
           )}
         </GridItem>
         <GridItem colSpan={3} colStart={5} colEnd={8}>
-          <Text htmlFor="eth-input"> 30% ETH allocation </Text>
+          <Text htmlFor="eth-input"> {`${constants.configs.ETH_ALLOCATION.text} ETH allocation `}</Text>
           <Input
             data-testid="eth-input"
             disabled={state.rates.status.value === "error"}
