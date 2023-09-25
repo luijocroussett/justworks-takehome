@@ -41,15 +41,15 @@ npm test
 [back to the top 🔝](#top)  
 <br>
 
-* constants.js    --> Contains configurations and messages presented on the UI. This information ideally would be on a CDN or at least env variables that way when changing configs and application copy an application deployment wouldnt be needed. This file is imported and used on both the application and the tests, that way there is a single place where information where information is retrieved from avoiding double works and potetially missing needed changes that could break tests or the application. This also makes tests more deterministic.
+* constants.js    --> Contains configurations and messages presented on the UI. This information, or parts of it, ideally would be on a CDN, or at the very least as env variables, that way when changing configs and application copy a full application deployment wouldn't be needed. This file is imported and used on both the application and the tests, that way there is a single place where information is retrieved avoiding double works and potentially missing needed changes that could break tests or the application. This also makes tests more deterministic.
 
 * helpers.js  --> Contains helper functions used to make convertions from USD to BTC and ETH, and viceversa. 
 
 * mockDat.js --> Contatains mock data needed to mock API calls, initial state...etc. 
 
-* reducers.js --> contatins the reducer funtions used to calculate the new state based on application functionality and user application interactions. 
+* reducers.js --> contains the reducer funtions used to calculate the new state based on application functionality and user application interactions. 
 
-* validators.js --> Contains validator logic, in this case for the inputs in order to validate that only numeric values following proper number formats are accepted.
+* validators.js --> Contains validator logic, in this case for the inputs, in order to validate that only numeric values following proper number formats are accepted.
 
 <br>
 
@@ -74,7 +74,7 @@ npm test
 
 * Input values are validated in order to determine if the inputs are being set to proper values that can be used to successfully perform the conversion calculation.  
 
-* When an invalid input value is set, an validation error banner is rendered onto the screen, and the inputs are set to "unable to calculate" value. When use clicks (focus) an input with an "unable to calculate" value, all inputs are automatically cleared for a better user experience. Potentially, a history feature could be created in order to allow users to go back a a previously successful calculation.  
+* When an invalid input value is set, a validation error banner is rendered onto the screen, and the inputs value are set to "unable to calculate". When user clicks (focus on) an input with an "unable to calculate" value, all inputs are automatically cleared for a better user experience. Potentially, a history feature could be created in order to allow users to go back a a previously successful calculations.  
 
 * Rates allocation percentage and text is stored and retreived from the constants json in order to allow for easy changes, if needed. This would potentially be on a CDN to prevent application deployments when changing configs.  
 
